@@ -7,7 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA2A254D1A31B6DC00E70672 /* vastkorting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA2A254B1A31B6DC00E70672 /* vastkorting.cpp */; };
 		CADE56C51A1F440E00871FCC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CADE56C41A1F440E00871FCC /* main.cpp */; };
+		CADE56D91A1F45B000871FCC /* Product.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CADE56D21A1F45B000871FCC /* Product.cpp */; };
+		CADE56DA1A1F45B000871FCC /* Productlijst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CADE56D41A1F45B000871FCC /* Productlijst.cpp */; };
+		CADE56DD1A1F45E800871FCC /* beheer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CADE56DB1A1F45E800871FCC /* beheer.cpp */; };
+		CADE57051A1F4CD000871FCC /* verkoop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CADE57031A1F4CD000871FCC /* verkoop.cpp */; };
+		CADE57081A1F4D2400871FCC /* verkoopBon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CADE57061A1F4D2400871FCC /* verkoopBon.cpp */; };
+		CADE570B1A1F527400871FCC /* korting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CADE57091A1F527400871FCC /* korting.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +30,23 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CA2A254B1A31B6DC00E70672 /* vastkorting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = vastkorting.cpp; path = ../vastkorting.cpp; sourceTree = "<group>"; };
+		CA2A254C1A31B6DC00E70672 /* vastkorting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vastkorting.h; path = ../vastkorting.h; sourceTree = "<group>"; };
 		CADE56C11A1F440E00871FCC /* taak3-ldecorte */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "taak3-ldecorte"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CADE56C41A1F440E00871FCC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		CADE56D11A1F45B000871FCC /* prijslijst.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = prijslijst.txt; path = "../../taak2-ldecorte/taak2-ldecorte/prijslijst.txt"; sourceTree = "<group>"; };
+		CADE56D21A1F45B000871FCC /* Product.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Product.cpp; path = "../../taak2-ldecorte/taak2-ldecorte/Product.cpp"; sourceTree = "<group>"; };
+		CADE56D31A1F45B000871FCC /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = "../../taak2-ldecorte/taak2-ldecorte/Product.h"; sourceTree = "<group>"; };
+		CADE56D41A1F45B000871FCC /* Productlijst.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Productlijst.cpp; path = "../../taak2-ldecorte/taak2-ldecorte/Productlijst.cpp"; sourceTree = "<group>"; };
+		CADE56D51A1F45B000871FCC /* Productlijst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Productlijst.h; path = "../../taak2-ldecorte/taak2-ldecorte/Productlijst.h"; sourceTree = "<group>"; };
+		CADE56DB1A1F45E800871FCC /* beheer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = beheer.cpp; sourceTree = "<group>"; };
+		CADE56DC1A1F45E800871FCC /* beheer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = beheer.h; sourceTree = "<group>"; };
+		CADE57031A1F4CD000871FCC /* verkoop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = verkoop.cpp; sourceTree = "<group>"; };
+		CADE57041A1F4CD000871FCC /* verkoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = verkoop.h; sourceTree = "<group>"; };
+		CADE57061A1F4D2400871FCC /* verkoopBon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = verkoopBon.cpp; sourceTree = "<group>"; };
+		CADE57071A1F4D2400871FCC /* verkoopBon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = verkoopBon.h; sourceTree = "<group>"; };
+		CADE57091A1F527400871FCC /* korting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = korting.cpp; sourceTree = "<group>"; };
+		CADE570A1A1F527400871FCC /* korting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = korting.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +79,56 @@
 		CADE56C31A1F440E00871FCC /* taak3-ldecorte */ = {
 			isa = PBXGroup;
 			children = (
+				CADE56DF1A1F475900871FCC /* productlijst */,
+				CADE56DE1A1F470500871FCC /* beheer */,
 				CADE56C41A1F440E00871FCC /* main.cpp */,
+				CADE56E31A1F48E900871FCC /* verkoop */,
+				CADE56E21A1F48BF00871FCC /* kortingen */,
 			);
 			path = "taak3-ldecorte";
+			sourceTree = "<group>";
+		};
+		CADE56DE1A1F470500871FCC /* beheer */ = {
+			isa = PBXGroup;
+			children = (
+				CADE56DB1A1F45E800871FCC /* beheer.cpp */,
+				CADE56DC1A1F45E800871FCC /* beheer.h */,
+			);
+			name = beheer;
+			sourceTree = "<group>";
+		};
+		CADE56DF1A1F475900871FCC /* productlijst */ = {
+			isa = PBXGroup;
+			children = (
+				CADE56D11A1F45B000871FCC /* prijslijst.txt */,
+				CADE56D21A1F45B000871FCC /* Product.cpp */,
+				CADE56D31A1F45B000871FCC /* Product.h */,
+				CADE56D41A1F45B000871FCC /* Productlijst.cpp */,
+				CADE56D51A1F45B000871FCC /* Productlijst.h */,
+			);
+			name = productlijst;
+			sourceTree = "<group>";
+		};
+		CADE56E21A1F48BF00871FCC /* kortingen */ = {
+			isa = PBXGroup;
+			children = (
+				CA2A254B1A31B6DC00E70672 /* vastkorting.cpp */,
+				CA2A254C1A31B6DC00E70672 /* vastkorting.h */,
+				CADE57091A1F527400871FCC /* korting.cpp */,
+				CADE570A1A1F527400871FCC /* korting.h */,
+			);
+			name = kortingen;
+			sourceTree = "<group>";
+		};
+		CADE56E31A1F48E900871FCC /* verkoop */ = {
+			isa = PBXGroup;
+			children = (
+				CADE57031A1F4CD000871FCC /* verkoop.cpp */,
+				CADE57041A1F4CD000871FCC /* verkoop.h */,
+				CADE57061A1F4D2400871FCC /* verkoopBon.cpp */,
+				CADE57071A1F4D2400871FCC /* verkoopBon.h */,
+			);
+			name = verkoop;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,7 +187,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CADE56DA1A1F45B000871FCC /* Productlijst.cpp in Sources */,
+				CADE57051A1F4CD000871FCC /* verkoop.cpp in Sources */,
+				CADE57081A1F4D2400871FCC /* verkoopBon.cpp in Sources */,
+				CADE56DD1A1F45E800871FCC /* beheer.cpp in Sources */,
+				CA2A254D1A31B6DC00E70672 /* vastkorting.cpp in Sources */,
+				CADE570B1A1F527400871FCC /* korting.cpp in Sources */,
 				CADE56C51A1F440E00871FCC /* main.cpp in Sources */,
+				CADE56D91A1F45B000871FCC /* Product.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +308,7 @@
 				CADE56CA1A1F440E00871FCC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
