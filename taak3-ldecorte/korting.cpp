@@ -103,17 +103,6 @@ bool korting::inDate(const std::string &startdate, const std::string &enddate){
     return false;
 }
 
-
-
-
-int korting::getAantal(){
-    return aantal_;
-}
-void korting::pluseen(){
-    aantal_ ++;
-}
-   
-
     product korting::getItem(){
         return item_;
         
@@ -127,8 +116,8 @@ void korting::pluseen(){
 
 
 
-korting::korting(const product &product, const std::string &soort, const std::string &startdate, const std::string &enddate, const int &aantal):
-        soort_(soort), item_(product), aantal_(aantal){
+korting::korting(const product &product, const std::string &soort, const std::string &startdate, const std::string &enddate):
+        soort_(soort), item_(product){
             addStartDate(startdate);
             addEndDate(enddate);
         

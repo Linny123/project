@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA4C538F1A475B8F001B4658 /* productbeheer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA4C538D1A475B8F001B4658 /* productbeheer.cpp */; };
 		CA740C061A47210400718679 /* misc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA740C041A47210400718679 /* misc.cpp */; };
 		CA867C8F1A44409200344240 /* kortingslijst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA867C8D1A44409100344240 /* kortingslijst.cpp */; };
 		CAB7753D1A4426CC001DEFE6 /* kortingen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CAB7753B1A4426CC001DEFE6 /* kortingen.cpp */; };
@@ -15,7 +16,6 @@
 		CADE56D91A1F45B000871FCC /* Product.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CADE56D21A1F45B000871FCC /* Product.cpp */; };
 		CADE56DA1A1F45B000871FCC /* Productlijst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CADE56D41A1F45B000871FCC /* Productlijst.cpp */; };
 		CADE56DD1A1F45E800871FCC /* beheer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CADE56DB1A1F45E800871FCC /* beheer.cpp */; };
-		CADE57051A1F4CD000871FCC /* verkoop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CADE57031A1F4CD000871FCC /* verkoop.cpp */; };
 		CADE57081A1F4D2400871FCC /* verkoopBon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CADE57061A1F4D2400871FCC /* verkoopBon.cpp */; };
 		CADE570B1A1F527400871FCC /* korting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CADE57091A1F527400871FCC /* korting.cpp */; };
 /* End PBXBuildFile section */
@@ -33,6 +33,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CA4C538D1A475B8F001B4658 /* productbeheer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = productbeheer.cpp; sourceTree = "<group>"; };
+		CA4C538E1A475B8F001B4658 /* productbeheer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = productbeheer.h; sourceTree = "<group>"; };
 		CA740C041A47210400718679 /* misc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = misc.cpp; sourceTree = "<group>"; };
 		CA740C051A47210400718679 /* misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = misc.h; sourceTree = "<group>"; };
 		CA867C8D1A44409100344240 /* kortingslijst.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = kortingslijst.cpp; sourceTree = "<group>"; };
@@ -50,8 +52,6 @@
 		CADE56D51A1F45B000871FCC /* Productlijst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Productlijst.h; path = "../../taak2-ldecorte/taak2-ldecorte/Productlijst.h"; sourceTree = "<group>"; };
 		CADE56DB1A1F45E800871FCC /* beheer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = beheer.cpp; sourceTree = "<group>"; };
 		CADE56DC1A1F45E800871FCC /* beheer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = beheer.h; sourceTree = "<group>"; };
-		CADE57031A1F4CD000871FCC /* verkoop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = verkoop.cpp; sourceTree = "<group>"; };
-		CADE57041A1F4CD000871FCC /* verkoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = verkoop.h; sourceTree = "<group>"; };
 		CADE57061A1F4D2400871FCC /* verkoopBon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = verkoopBon.cpp; sourceTree = "<group>"; };
 		CADE57071A1F4D2400871FCC /* verkoopBon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = verkoopBon.h; sourceTree = "<group>"; };
 		CADE57091A1F527400871FCC /* korting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = korting.cpp; sourceTree = "<group>"; };
@@ -91,6 +91,8 @@
 				CADE56DF1A1F475900871FCC /* productlijst */,
 				CADE56DE1A1F470500871FCC /* beheer */,
 				CADE56C41A1F440E00871FCC /* main.cpp */,
+				CA4C538D1A475B8F001B4658 /* productbeheer.cpp */,
+				CA4C538E1A475B8F001B4658 /* productbeheer.h */,
 				CADE56E31A1F48E900871FCC /* verkoop */,
 				CADE56E21A1F48BF00871FCC /* kortingen */,
 			);
@@ -127,9 +129,9 @@
 				CADE570A1A1F527400871FCC /* korting.h */,
 				CA740C041A47210400718679 /* misc.cpp */,
 				CA740C051A47210400718679 /* misc.h */,
-				CAB7753E1A442F01001DEFE6 /* extrakorting.cpp */,
 				CA867C8D1A44409100344240 /* kortingslijst.cpp */,
 				CA867C8E1A44409100344240 /* kortingslijst.h */,
+				CAB7753E1A442F01001DEFE6 /* extrakorting.cpp */,
 				CAB7753F1A442F01001DEFE6 /* extrakorting.h */,
 			);
 			name = kortingen;
@@ -138,8 +140,6 @@
 		CADE56E31A1F48E900871FCC /* verkoop */ = {
 			isa = PBXGroup;
 			children = (
-				CADE57031A1F4CD000871FCC /* verkoop.cpp */,
-				CADE57041A1F4CD000871FCC /* verkoop.h */,
 				CADE57061A1F4D2400871FCC /* verkoopBon.cpp */,
 				CADE57071A1F4D2400871FCC /* verkoopBon.h */,
 			);
@@ -203,7 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CADE56DA1A1F45B000871FCC /* Productlijst.cpp in Sources */,
-				CADE57051A1F4CD000871FCC /* verkoop.cpp in Sources */,
+				CA4C538F1A475B8F001B4658 /* productbeheer.cpp in Sources */,
 				CADE57081A1F4D2400871FCC /* verkoopBon.cpp in Sources */,
 				CA740C061A47210400718679 /* misc.cpp in Sources */,
 				CADE56DD1A1F45E800871FCC /* beheer.cpp in Sources */,

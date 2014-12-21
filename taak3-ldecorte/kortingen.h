@@ -13,62 +13,70 @@
 #include "korting.h"
 
 struct vastekorting : public korting{
-    vastekorting(const product &product, const std::string &soort, const std::string &startdate, const std::string &enddate, const int &aantal, const float &procent): korting(product, soort, startdate, enddate, aantal), procent_(procent){};
+    vastekorting(const product &product, const std::string &soort, const std::string &startdate, const std::string &enddate, const float &procent): korting(product, soort, startdate, enddate), procent_(procent){};
+    ~vastekorting(){};
     
-    float berekenKorting(){
+    virtual float berekenKorting(int aantal){
         product item = getItem();
-        double prijs = getAantal() * item.getPrijs();
+        double prijs = aantal * item.getPrijs();
         return prijs / 100 * procent_;
     }
-    bool geldig(){
+    virtual bool geldig(int aantal){
         return true;
     }
-    void printKorting(){
-        std::cout << "-" << berekenKorting() << "\t " << procent_ << "% vaste korting " << " ( einde " << getEndDate() <<  ")\n";
+    virtual void printKorting(int aantal){
+        std::cout << "-" << berekenKorting(aantal) << "\t " << procent_ << "% vaste korting " << " ( einde " << getEndDate() <<  ")\n";
     }
     
-    void printInfo(){
+    virtual void printInfo(){
         std::cout << procent_ << "% vaste korting " << " ( einde " << getEndDate() <<  ")\n";
     
     }
+    virtual float getprocent(){return procent_;}
+
+    virtual int getminimum() = 0;
+    virtual int getgratis() = 0;
 private:
     float procent_;
 };
 
 struct nkopenmgratis : public korting{
-    nkopenmgratis(const product &product, const std::string &soort, const std::string &startdate,  const std::string &enddate, const int &aantal, const int &kaantal, const int &gaantal, const float &procent):
-        korting(product, soort, startdate, enddate, aantal),
+    nkopenmgratis(const product &product, const std::string &soort, const std::string &startdate,  const std::string &enddate, const int &kaantal, const int &gaantal, const float &procent):
+        korting(product, soort, startdate, enddate),
         kortingsaantal_(kaantal),
         gratisaantal_(gaantal),
         procent_(procent){};
-    
+    ~nkopenmgratis(){};
 
     
     
-    float berekenKorting(){
-        int aantalgratis = getAantal()/(kortingsaantal_+ gratisaantal_);
+    virtual float berekenKorting(int aantal){
+        int aantalgratis = aantal/(kortingsaantal_+ gratisaantal_);
         if(aantalgratis >= 1){
             product item = getItem();
-            double prijs = getAantal() * item.getPrijs();
+            double prijs = aantal * item.getPrijs();
             return prijs * aantalgratis;
         }
         return 0;
     }
-    bool geldig()
+    virtual bool geldig(int aantal)
     {
-        if(getAantal() >= kortingsaantal_){
+        if(aantal >= kortingsaantal_){
             return true;
         }
         return false;
     }
     
-    void printKorting(){
-        std::cout << "-" << berekenKorting() << "\t " << kortingsaantal_ << "kopen" << gratisaantal_ << "gratis" << " ( einde " << getEndDate() <<  ")\n";
+    virtual void printKorting(int aantal){
+        std::cout << "-" << berekenKorting(aantal ) << "\t " << kortingsaantal_ << "kopen" << gratisaantal_ << "gratis" << " ( einde " << getEndDate() <<  ")\n";
     }
     
-    void printInfo(){
+    virtual void printInfo(){
         std::cout << kortingsaantal_ << "kopen" << gratisaantal_ << "gratis" << " ( einde " << getEndDate() <<  ")\n"; }
     
+    virtual float getprocent(){return procent_;}
+    virtual int getminimum(){return kortingsaantal_;}
+    virtual int getgratis(){return gratisaantal_;}
 private:
     int kortingsaantal_;
     int gratisaantal_;
@@ -76,34 +84,38 @@ private:
 };
 
 struct volumekorting : public korting{
-    volumekorting(const product &product, const std::string &soort, const std::string &startdate, const std::string &enddate, const int &aantal, const int &kaantal, const float &procent):
-    korting(product, soort, startdate, enddate, aantal),
+    volumekorting(const product &product, const std::string &soort, const std::string &startdate, const std::string &enddate, const int &kaantal, const float &procent):
+    korting(product, soort, startdate, enddate),
     kortingsaantal_(kaantal),
     procent_(procent){};
+    ~volumekorting(){};
     
     
-    
-    float berekenKorting(){
-        if(getAantal() >= kortingsaantal_){
+    virtual float berekenKorting(int aantal){
+        if(aantal >= kortingsaantal_){
             product item = getItem();
-            double prijs = getAantal() * item.getPrijs();
+            double prijs = aantal * item.getPrijs();
             return prijs / 100 * procent_;
         }
         return 0;
     }
-    bool geldig()
+    virtual bool geldig(int aantal)
     {
-        if(getAantal() >= kortingsaantal_){
+        if(aantal >= kortingsaantal_){
             return true;
         }
         return false;
     }
     
-    void printKorting(){
-        std::cout << "-" << berekenKorting() << "\t " << procent_ << "% korting vannaf " << kortingsaantal_ << " ( einde " << getEndDate() <<  ")\n";   }
+    virtual void printKorting(int aantal){
+        std::cout << "-" << berekenKorting(aantal) << "\t " << procent_ << "% korting vannaf " << kortingsaantal_ << " ( einde " << getEndDate() <<  ")\n";   }
     
-    void printInfo(){
+    virtual void printInfo(){
         std::cout << procent_ << "% korting vannaf " << kortingsaantal_ << " ( einde " << getEndDate() <<  ")\n";   }
+    
+    virtual float getprocent(){return procent_;}
+    virtual int getminimum(){return kortingsaantal_;}
+    virtual int getgratis() = 0;
 private:
     int kortingsaantal_;
     float procent_;

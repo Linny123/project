@@ -15,17 +15,26 @@
 #include "kortingslijst.h"
 #include "kortingen.h"
 #include "korting.h"
+#include "extrakorting.h"
 
 struct bonproduct{
 private:
     product item_;
     int aantal_;
+    long barcode_;
 public:
+    bonproduct(product item, int aantal):item_(item), aantal_(aantal){}
     product getItem(){
         return item_;
     }
     void addAantal(int plusaantal){
         aantal_ = aantal_ + plusaantal;
+    }
+    int getAantal(){
+    return aantal_;
+    }
+    long getBarcode(){
+        return barcode_;
     }
     void printItem(){
         float totaal = aantal_ * item_.getPrijs();
@@ -37,16 +46,20 @@ public:
 
 class verkoopBon{
 private:
-    std::map<long, product> productlijst_;
-    std::map<long, korting> kortingslijst_;
+    productList productlijst_;
+    kortingslijst kortingslijst_;
     std::map<long, bonproduct> bon_;
+    extrakorting extrakorting_;
+    float prijs_ = 0;
     
 public:
     void add(const long &barcode, const int &aantal);
-    product getproduct(const long &barcode);
+    product getproduct(const long &barcode){
+        return bon_[barcode].getItem();
+    }
     void verwijder(const long &barcode, const int &aantal);
     void printBon();
-    verkoopBon();
+    verkoopBon(const productList &productlijst, const kortingslijst & kortingslijst, const extrakorting &extrakort): productlijst_(productlijst), kortingslijst_(kortingslijst), extrakorting_(extrakort){}
     
 };
 

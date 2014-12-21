@@ -22,15 +22,17 @@ class kortingslijst{
 private:
     lkmap kortingslijst_;
     productList productlijst_;
+    std::string locatie_;
     
     
     
 public:
-    kortingslijst(const productList &productlijst);
+    kortingslijst(const productList &productlijst, std::string locatie);
     void addkorting(const long &barcode, const std::string &soort);
     void removekorting(const long &barcode);
     korting findkorting(const long &barcode);
     void printkortingen();
+    void schrijfKortingsLijstWeg();
     
     
 };

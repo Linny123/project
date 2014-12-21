@@ -13,8 +13,49 @@
 #include "Product.h"
 
 
-kortingslijst::kortingslijst(const productList &productlijst) :
-    productlijst_(productlijst) {}
+
+kortingslijst::kortingslijst(const productList &productlijst, std::string locatie) :
+    productlijst_(productlijst), locatie_(locatie) {
+        long barcode;
+        std::string startdatum;
+        std::string einddatum;
+        std::string soort;
+        
+        std::string lijn;
+        
+        std::ifstream ifs (locatie);   //zet invoer file op stream
+        while (true){
+            
+            if (ifs.eof()){
+                break;}
+            ifs>>barcode;
+            ifs>>startdatum;
+            ifs>>einddatum;
+            ifs>>soort;
+            product prod = productlijst_.neemProduct(barcode);
+            
+            if (soort == "VAST"){
+                float procent;
+                vastekorting kort(prod, soort, startdatum, einddatum, procent);
+                kortingslijst_.insert( std::pair<long, korting>(barcode, kort));
+            }
+            if (soort == "EXTRA"){
+                float procent;
+                int minimum;
+                int gratis;
+                nkopenmgratis kort(prod, soort, startdatum, einddatum, minimum, gratis, procent);
+                kortingslijst_.insert( std::pair<long, korting>(barcode, kort));
+            }
+            if (soort == "VOLUME"){
+                float procent;
+                int minimum;
+                volumekorting kort(prod, soort, startdatum, einddatum, minimum, procent);
+                kortingslijst_.insert( std::pair<long, korting>(barcode, kort));
+
+            }
+        }
+    
+    }
 
 void kortingslijst::addkorting(const long &barcode, const std::string &soort){
     if(productlijst_.bestaatProduct(barcode)){
@@ -76,14 +117,17 @@ void kortingslijst::addkorting(const long &barcode, const std::string &soort){
         product prod = productlijst_.neemProduct(barcode);
         if(soort =="VAST"){
             vastekorting kort(prod, soort, startdatum, einddatum, procent);
+            kortingslijst_.insert( std::pair<long, korting>(barcode, kort));
             
         }
         if (soort == "EXTRA"){
             nkopenmgratis kort(prod, soort, startdatum, einddatum, minimum, gratis, procent);
+            kortingslijst_.insert( std::pair<long, korting>(barcode, kort));
         }
         
         if (soort == "VOLUME"){
             volumekorting kort(prod, soort, startdatum, einddatum, minimum, procent);
+            kortingslijst_.insert( std::pair<long, korting>(barcode, kort));
         }
      
     std::cout << "korting voor artikel" << barcode << " (" << prod.getName() << ") toegevoegd. \n";
@@ -125,6 +169,45 @@ void kortingslijst::printkortingen(){
         leeg.printInfo();
     }
     
+}
+
+void kortingslijst::schrijfKortingsLijstWeg(){
+    
+    std::ofstream myfile;
+    myfile.open (locatie_);
+    
+    
+    std::map<long, product> ::iterator it;
+    
+    // show content:
+    for (lkmap::iterator it=kortingslijst_.begin(); it!=kortingslijst_.end(); ++it){
+        korting leeg = it->second;
+        long barcode = leeg.getItem().getBarcode;
+        
+        std::string startdatum = leeg.getStartDate;
+        std::string einddatum = leeg.getEndDate;
+        std::string soort = leeg.getsoort;
+        myfile << barcode << "\t" << startdatum << "\t" << einddatum << "\t" << soort << "\t";
+        if (soort == "VAST"){
+            float procent = leeg.getprocent;
+            myfile << procent << "\n";
+        }
+        if (soort == "EXTRA"){
+            float procent = leeg.getprocent;
+            int minimum = leeg.getminimum;
+            int gratis = leeg.getgratis;
+            myfile << procent << "\t" << minimum << "\t" << gratis << "\n";
+        }
+        if (soort == "VOLUME"){
+            float procent = leeg.getprocent;
+            int minimum = leeg.getminimum;
+            myfile << procent << "\t" << minimum << "\n";
+        }
+    }
+    
+    
+    
+    myfile.close();
 }
 
     

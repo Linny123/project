@@ -23,7 +23,6 @@
 struct korting{
 private:
     std::string soort_;
-    int aantal_;
     int startDate[3];
     int endDate[3];
     product item_;
@@ -42,15 +41,17 @@ public:
     bool stillOpen();
     bool inDate(const std::string &startdate, const std::string &enddate);
     product getItem();
-    int getAantal();
-    void pluseen();
+    std::string getsoort(){ return soort_;}
     product addItem(const product &product);
-    korting(const product &product, const std::string &soort, const std::string &startdate, const std::string &enddate, const int &aantal);
+    korting(const product &product, const std::string &soort, const std::string &startdate, const std::string &enddate);
     virtual ~korting(){}
-    virtual float berekenKorting() = 0;
+    virtual float berekenKorting(int aantal) = 0;
     virtual void printInfo() = 0;
-    virtual void printKorting() = 0;
-    virtual bool geldig() = 0;
+    virtual void printKorting(int aantal) = 0;
+    virtual bool geldig(int aantal) = 0;
+    virtual float getprocent() = 0;
+    virtual int getminimum() = 0;
+    virtual int getgratis() = 0;
     
     
 };
