@@ -16,56 +16,28 @@
 #include "korting.h"
 #include <time.h>
 #include <sstream>
-
-    std::string korting::getDate(){
-        char tijd[80];
-        time_t rawtime;
-        std::time( &rawtime );
-        struct tm *info;
-        info = localtime( &rawtime );
-        std::strftime (tijd, 80, "%d/%m/%Y", info);
-        
-        std::stringstream ss;
-        std::string s;
-        ss << tijd;
-        ss >> s;
-        
-        return s;
-        
-    }
-     int * korting::fromStringtoDate( std::string date){
-         static int adate[3];
-         for (int i=0; i<date.length(); i++)
-         {
-             if (date[i] == '/')
-                 adate[i] = ' ';
-         }
-         std::stringstream ss(date);
-         ss >> adate[0]; //day
-         ss >> adate[1]; //month
-         ss >> adate[2]; //year
-         return adate;
-    }
-    std::string toStringDate(int date[3]){
-        std::string korting;
-        korting.append(std::to_string(date[0]));
-        korting.append("/");
-        korting.append(std::to_string(date[1]));
-        korting.append("/");
-        korting.append(std::to_string(date[2]));
-
-        return korting;
-   
-    }
-
+#include "Productlijst.h"
+#include "misc.h"
+    
 
     std::string korting::getSoort(){
     
         return soort_;
     }
+
+
+std::string korting::toStringDate( int date[3]){
+    std::stringstream string;
+    string << date[0] << "/" << date[1] << "/" << date[2];
+    std::string dates;
+    string >> dates;
+    return dates;
+}
+
     void korting::addSoort(const std::string &soort){
         soort_ = soort;
     }
+
     std::string korting::getStartDate(){
         return toStringDate(startDate);
     }
@@ -98,7 +70,40 @@
         return false;
     }
 
+bool korting::inDate(const std::string &startdate, const std::string &enddate){
+    int start[3];
+    int end[3];
     
+    start[0] = fromStringtoDate(startdate)[0];
+    start[1] = fromStringtoDate(startdate)[1];
+    start[2] = fromStringtoDate(startdate)[2];
+    
+    
+    end[0] = fromStringtoDate(enddate)[0];
+    end[1] = fromStringtoDate(enddate)[1];
+    end[2] = fromStringtoDate(enddate)[2];
+    
+    if(((end[2] >= startDate[2]) and (startDate[2] >= start[2])) or
+       ((end[2] >= endDate[2]) and (endDate[2] >= start[2])) or
+       ((end[2] >= endDate[2]) and (startDate[2] >= start[2])) or
+       ((endDate[2] >= end[2]) and (start[2] >= startDate[2]))){
+        if(((end[1] >= startDate[1]) and (startDate[1] >= start[1])) or
+           ((end[1] >= endDate[1]) and (endDate[1] >= start[1])) or
+           ((end[1] >= endDate[1]) and (startDate[1] >= start[1])) or
+           ((endDate[1] >= end[1]) and (start[1] >= startDate[1]))){
+            if(((end[0] >= startDate[0]) and (startDate[0] >= start[0])) or
+               ((end[0] >= endDate[0]) and (endDate[0] >= start[0])) or
+               ((end[0] >= endDate[0]) and (startDate[0] >= start[0])) or
+               ((endDate[0] >= end[0]) and (start[0] >= startDate[0]))){
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+
 
 
 int korting::getAantal(){
@@ -127,5 +132,5 @@ korting::korting(const product &product, const std::string &soort, const std::st
         addStartDate(startdate);
         addEndDate(enddate);
     }
-    korting::korting(){}
+
 

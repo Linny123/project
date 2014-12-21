@@ -14,7 +14,7 @@
 
 struct vastekorting : public korting{
     vastekorting(const product &product, const std::string &soort, const std::string &startdate, const std::string &enddate, const float &procent): korting(product, soort, startdate, enddate), procent_(procent){};
-    float procent_;
+    
     float berekenKorting(){
         product item = getItem();
         double prijs = getAantal() * item.getPrijs();
@@ -24,11 +24,15 @@ struct vastekorting : public korting{
         return true;
     }
     void printKorting(){
-        std::cout << "-" << berekenKorting() << "\t " << procent_ << "% vaste korting \n";
+        std::cout << "-" << berekenKorting() << "\t " << procent_ << "% vaste korting " << " ( einde " << getEndDate() <<  ")\n";
     }
     
+    void printInfo(){
+        std::cout << procent_ << "% vaste korting " << " ( einde " << getEndDate() <<  ")\n";
     
-    
+    }
+private:
+    float procent_;
 };
 
 struct nkopenmgratis : public korting{
@@ -38,9 +42,7 @@ struct nkopenmgratis : public korting{
         gratisaantal_(gaantal),
         procent_(procent){};
     
-    int kortingsaantal_;
-    int gratisaantal_;
-    float procent_;
+
     
     
     float berekenKorting(){
@@ -61,9 +63,50 @@ struct nkopenmgratis : public korting{
     }
     
     void printKorting(){
-        std::cout << "-" << berekenKorting() << "\t " << kortingsaantal_ << "kopen" << gratisaantal_ << "gratis\n";
+        std::cout << "-" << berekenKorting() << "\t " << kortingsaantal_ << "kopen" << gratisaantal_ << "gratis" << " ( einde " << getEndDate() <<  ")\n";
     }
     
+    void printInfo(){
+        std::cout << kortingsaantal_ << "kopen" << gratisaantal_ << "gratis" << " ( einde " << getEndDate() <<  ")\n"; }
+    
+private:
+    int kortingsaantal_;
+    int gratisaantal_;
+    float procent_;
+};
+
+struct volumekorting : public korting{
+    volumekorting(const product &product, const std::string &soort, const std::string &startdate, const std::string &enddate, const int &kaantal, const float &procent):
+    korting(product, soort, startdate, enddate),
+    kortingsaantal_(kaantal),
+    procent_(procent){};
+    
+    
+    
+    float berekenKorting(){
+        if(getAantal() >= kortingsaantal_){
+            product item = getItem();
+            double prijs = getAantal() * item.getPrijs();
+            return prijs / 100 * procent_;
+        }
+        return 0;
+    }
+    bool geldig()
+    {
+        if(getAantal() >= kortingsaantal_){
+            return true;
+        }
+        return false;
+    }
+    
+    void printKorting(){
+        std::cout << "-" << berekenKorting() << "\t " << procent_ << "% korting vannaf " << kortingsaantal_ << " ( einde " << getEndDate() <<  ")\n";   }
+    
+    void printInfo(){
+        std::cout << procent_ << "% korting vannaf " << kortingsaantal_ << " ( einde " << getEndDate() <<  ")\n";   }
+private:
+    int kortingsaantal_;
+    float procent_;
 };
 
 

@@ -16,20 +16,19 @@
 #include <stdio.h>
 #include <vector>
 #include <array>
+#include "misc.h"
 
 
 
-class korting{
+struct korting{
 private:
     std::string soort_;
     int aantal_;
     int startDate[3];
     int endDate[3];
     product item_;
-    int *  fromStringtoDate(std::string date);
-    std::string toStringStartDate( int date[3]);
-    
-    std::string getDate();
+    std::string toStringDate( int date[3]);
+
     
     
     
@@ -41,13 +40,16 @@ public:
     std::string getEndDate();
     void addEndDate(const std::string &date);
     bool stillOpen();
+    bool inDate(const std::string &startdate, const std::string &enddate);
     product getItem();
     int getAantal();
     void pluseen();
     product addItem(const product &product);
-    
     korting(const product &product, const std::string &soort, const std::string &startdate, const std::string &enddate);
-    korting();
+    virtual ~korting(){}
+    virtual float berekenKorting() = 0;
+    virtual void printInfo() = 0;
+    virtual bool geldig() = 0;
     
     
 };

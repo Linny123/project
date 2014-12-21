@@ -13,18 +13,23 @@
 #include <map>
 #include "korting.h"
 #include <string.h>
+#include <list>
+#include <time.h>
+#include "Productlijst.h"
 
+typedef std::multimap<long, korting> lkmap;
 class kortingslijst{
 private:
-    std::multimap<long, korting> kortingslijst_;
+    lkmap kortingslijst_;
+    productList productlijst_;
+    
     
     
 public:
-    kortingslijst();
-    bool vergelijkkortingen(std::string date, long barcode);
-    void addkorting(long barcode, std::string soort);
-    void removekorting(long barcode);
-    korting findkorting(long barcode);
+    kortingslijst(const productList &productlijst);
+    void addkorting(const long &barcode, const std::string &soort);
+    void removekorting(const long &barcode);
+    korting findkorting(const long &barcode);
     void printkortingen();
     
     
