@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA867C8F1A44409200344240 /* kortingslijst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA867C8D1A44409100344240 /* kortingslijst.cpp */; };
 		CAB7753D1A4426CC001DEFE6 /* kortingen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CAB7753B1A4426CC001DEFE6 /* kortingen.cpp */; };
 		CAB775401A442F01001DEFE6 /* extrakorting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CAB7753E1A442F01001DEFE6 /* extrakorting.cpp */; };
 		CADE56C51A1F440E00871FCC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CADE56C41A1F440E00871FCC /* main.cpp */; };
@@ -31,6 +32,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CA867C8D1A44409100344240 /* kortingslijst.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = kortingslijst.cpp; sourceTree = "<group>"; };
+		CA867C8E1A44409100344240 /* kortingslijst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kortingslijst.h; sourceTree = "<group>"; };
 		CAB7753B1A4426CC001DEFE6 /* kortingen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = kortingen.cpp; sourceTree = "<group>"; };
 		CAB7753C1A4426CC001DEFE6 /* kortingen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kortingen.h; sourceTree = "<group>"; };
 		CAB7753E1A442F01001DEFE6 /* extrakorting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = extrakorting.cpp; sourceTree = "<group>"; };
@@ -120,6 +123,8 @@
 				CADE57091A1F527400871FCC /* korting.cpp */,
 				CADE570A1A1F527400871FCC /* korting.h */,
 				CAB7753E1A442F01001DEFE6 /* extrakorting.cpp */,
+				CA867C8D1A44409100344240 /* kortingslijst.cpp */,
+				CA867C8E1A44409100344240 /* kortingslijst.h */,
 				CAB7753F1A442F01001DEFE6 /* extrakorting.h */,
 			);
 			name = kortingen;
@@ -197,6 +202,7 @@
 				CADE57081A1F4D2400871FCC /* verkoopBon.cpp in Sources */,
 				CADE56DD1A1F45E800871FCC /* beheer.cpp in Sources */,
 				CADE570B1A1F527400871FCC /* korting.cpp in Sources */,
+				CA867C8F1A44409200344240 /* kortingslijst.cpp in Sources */,
 				CADE56C51A1F440E00871FCC /* main.cpp in Sources */,
 				CADE56D91A1F45B000871FCC /* Product.cpp in Sources */,
 				CAB7753D1A4426CC001DEFE6 /* kortingen.cpp in Sources */,
