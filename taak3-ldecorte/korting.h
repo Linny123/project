@@ -45,10 +45,11 @@ public:
     int getAantal();
     void pluseen();
     product addItem(const product &product);
-    korting(const product &product, const std::string &soort, const std::string &startdate, const std::string &enddate);
+    korting(const product &product, const std::string &soort, const std::string &startdate, const std::string &enddate, const int &aantal);
     virtual ~korting(){}
     virtual float berekenKorting() = 0;
     virtual void printInfo() = 0;
+    virtual void printKorting() = 0;
     virtual bool geldig() = 0;
     
     

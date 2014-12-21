@@ -13,7 +13,7 @@
 #include "korting.h"
 
 struct vastekorting : public korting{
-    vastekorting(const product &product, const std::string &soort, const std::string &startdate, const std::string &enddate, const float &procent): korting(product, soort, startdate, enddate), procent_(procent){};
+    vastekorting(const product &product, const std::string &soort, const std::string &startdate, const std::string &enddate, const int &aantal, const float &procent): korting(product, soort, startdate, enddate, aantal), procent_(procent){};
     
     float berekenKorting(){
         product item = getItem();
@@ -36,8 +36,8 @@ private:
 };
 
 struct nkopenmgratis : public korting{
-    nkopenmgratis(const product &product, const std::string &soort, const std::string &startdate, const std::string &enddate, const int &kaantal, const int &gaantal, const float &procent):
-        korting(product, soort, startdate, enddate),
+    nkopenmgratis(const product &product, const std::string &soort, const std::string &startdate,  const std::string &enddate, const int &aantal, const int &kaantal, const int &gaantal, const float &procent):
+        korting(product, soort, startdate, enddate, aantal),
         kortingsaantal_(kaantal),
         gratisaantal_(gaantal),
         procent_(procent){};
@@ -76,8 +76,8 @@ private:
 };
 
 struct volumekorting : public korting{
-    volumekorting(const product &product, const std::string &soort, const std::string &startdate, const std::string &enddate, const int &kaantal, const float &procent):
-    korting(product, soort, startdate, enddate),
+    volumekorting(const product &product, const std::string &soort, const std::string &startdate, const std::string &enddate, const int &aantal, const int &kaantal, const float &procent):
+    korting(product, soort, startdate, enddate, aantal),
     kortingsaantal_(kaantal),
     procent_(procent){};
     

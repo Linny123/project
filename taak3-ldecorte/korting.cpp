@@ -127,10 +127,11 @@ void korting::pluseen(){
 
 
 
-korting::korting(const product &product, const std::string &soort, const std::string &startdate, const std::string &enddate):
-        soort_(soort), item_(product){
-        addStartDate(startdate);
-        addEndDate(enddate);
+korting::korting(const product &product, const std::string &soort, const std::string &startdate, const std::string &enddate, const int &aantal):
+        soort_(soort), item_(product), aantal_(aantal){
+            addStartDate(startdate);
+            addEndDate(enddate);
+        
     }
 
 

@@ -12,29 +12,35 @@
 #include <stdio.h>
 #include <map>
 #include "Product.h"
+#include "kortingslijst.h"
+#include "kortingen.h"
+#include "korting.h"
 
-
-class productKorting{
+struct bonproduct{
 private:
-    long barcode_;
+    product item_;
     int aantal_;
-    double prijs_;
-    int korting_;
-    
 public:
-    int getAantal();
-    void addAantal(const int &aantal);
-    double getPrijs();
-    double getKortingProcent();
-    std::string getKortingText();
-    
-    productKorting(const long &barcode, const int &aantal);
-    
+    product getItem(){
+        return item_;
+    }
+    void addAantal(int plusaantal){
+        aantal_ = aantal_ + plusaantal;
+    }
+    void printItem(){
+        float totaal = aantal_ * item_.getPrijs();
+        std::cout << item_.getBarcode() << "\t" << aantal_ << "\t" << item_.getName() << "\t" << totaal << "\t";
+    }
 };
+
+
 
 class verkoopBon{
 private:
-    std::map<long, int> productlijst_;
+    std::map<long, product> productlijst_;
+    std::map<long, korting> kortingslijst_;
+    std::map<long, bonproduct> bon_;
+    
 public:
     void add(const long &barcode, const int &aantal);
     product getproduct(const long &barcode);
